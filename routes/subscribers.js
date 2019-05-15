@@ -5,7 +5,7 @@ const subSchema = require('../models/subscriber')
 // Get all subs
 router.get('/',async (req, res) => {
     try {
-        const subscribers = await subSchema.find()
+        const subscribers = await subSchema.find({}).sort('-subDate').exec()
         res.json(subscribers)
     } catch (err) {
         res.status(500).json({
